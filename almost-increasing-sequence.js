@@ -39,11 +39,11 @@ const sequence3 = [1, 2, 1, 2]; /* expected output: false */
 const sequence4 = [3, 6, 5, 8, 10, 20, 15]; /* expected output: false */
 const sequence5 = [1, 1, 2, 3, 4, 4]; /* expected output: false */
 const sequence6 = [1, 4, 10, 4, 2]; /* expected output: false */
-const sequence7 = [[10, 1, 2, 3, 4, 5]]; /* expected output: true */
+const sequence7 = [10, 1, 2, 3, 4, 5]; /* expected output: true */
 
 function almostIncreasingSequence(sequence) {
   const length = sequence.length;
-  const removalCount = 0;
+  let removalCount = 0;
 
   if (length === 1) return true;
 
@@ -51,7 +51,13 @@ function almostIncreasingSequence(sequence) {
     if (removalCount <= 1) {
       if (sequence[i + 1]) {
         if (sequence[i + 1] <= sequence[i]) {
-
+          removalCount++;
+          if (sequence[i + 2] <= sequence[i]) {
+            removalCount++;
+          } else {
+            i++;
+            continue;
+          }
         }
       } else {
         break;
@@ -69,4 +75,4 @@ function almostIncreasingSequence(sequence) {
   }
 }
 
-almostIncreasingSequence(sequence1);
+console.log(almostIncreasingSequence(sequence7));
