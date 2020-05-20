@@ -42,5 +42,7 @@ const sequence6 = [1, 4, 10, 4, 2]; /* expected output: false */
 const sequence7 = [[10, 1, 2, 3, 4, 5]]; /* expected output: true */
 
 function almostIncreasingSequence(sequence) {
-  console.log(sequence);
+  if (sequence.length === 1) {
+    return true;
+  }
 }
