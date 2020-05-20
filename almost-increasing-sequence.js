@@ -42,7 +42,31 @@ const sequence6 = [1, 4, 10, 4, 2]; /* expected output: false */
 const sequence7 = [[10, 1, 2, 3, 4, 5]]; /* expected output: true */
 
 function almostIncreasingSequence(sequence) {
-  if (sequence.length === 1) {
+  const length = sequence.length;
+  const removalCount = 0;
+
+  if (length === 1) return true;
+
+  for (let i = 0; i < sequence.length; i++) {
+    if (removalCount <= 1) {
+      if (sequence[i + 1]) {
+        if (sequence[i + 1] <= sequence[i]) {
+
+        }
+      } else {
+        break;
+      }
+    } else {
+      break;
+    }
+
+  }
+
+  if (removalCount <= 1) {
     return true;
+  } else {
+    return false;
   }
 }
+
+almostIncreasingSequence(sequence1);
