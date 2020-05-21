@@ -67,25 +67,44 @@ function almostIncreasingSequence(sequence) {
                   removalCount += 2;
                   break;
                 }
-
               } else {
                 // If there is not a sequence[i+2], increment removal count, break
+                removalCount++;
+                break;
               }
             } else {
               // If sequence[i-1] is greater than sequence[i+1], check if there is a sequence[i+2]
-              // If there is a sequence[i+2], check if sequence[i+2] is greater than sequence[i]
-              // If sequence[i+2] is greater than sequence[i], increment removal count, increment i by 1 (i++)
-              // If there is not a sequence[i+2], increment removal count, break
+              if (sequence[i + 2]) {
+                // If there is a sequence[i+2], check if sequence[i+2] is greater than sequence[i]
+                if (sequence[i + 2] > sequence[1]) {
+                  // If sequence[i+2] is greater than sequence[i], increment removal count, increment i by 1 (i++)
+                  removalCount++;
+                  i++;
+                } else {
+                  removalCount += 2;
+                  break;
+                }
+              }
             }
-
           } else {
             // If there is not a sequence[i-1], check if there is a sequence[i+2]
-            // If there is a sequence[i+2], check if sequence[i+2] is greater than sequence[i]
-            // If sequence[i+2] is greater than sequence[i], increment removal count, increment i by 1 (i++)
-            // If sequence[i+2] is less or equal to than sequence[i], increment removal count by 2, break
-            // If there is not a sequence[i+2], increment removal count, break
+            if (sequence[i + 2]) {
+              // If there is a sequence[i+2], check if sequence[i+2] is greater than sequence[i]
+              if (sequence[i + 2] > sequence[i]) {
+                // If sequence[i+2] is greater than sequence[i], increment removal count, increment i by 1 (i++)
+                removalCount++;
+                i++;
+              } else {
+                // If sequence[i+2] is less or equal to than sequence[i], increment removal count by 2, break
+                removalCount++;
+                break;
+              }
+            } else {
+              // If there is not a sequence[i+2], increment removal count, break
+              removalCount++;
+              break;
+            }
           }
-
         }
       } else {
         break;
@@ -103,4 +122,10 @@ function almostIncreasingSequence(sequence) {
   }
 }
 
+console.log(almostIncreasingSequence(sequence1));
+console.log(almostIncreasingSequence(sequence2));
+console.log(almostIncreasingSequence(sequence3));
+console.log(almostIncreasingSequence(sequence4));
+console.log(almostIncreasingSequence(sequence5));
+console.log(almostIncreasingSequence(sequence6));
 console.log(almostIncreasingSequence(sequence7));
