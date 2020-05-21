@@ -51,13 +51,41 @@ function almostIncreasingSequence(sequence) {
     if (removalCount <= 1) {
       if (sequence[i + 1]) {
         if (sequence[i + 1] <= sequence[i]) {
-          removalCount++;
-          if (sequence[i + 2] <= sequence[i]) {
-            removalCount++;
+          // Check if there is a sequence[i-1]
+          if (sequence[i - 1]) {
+            // If there is a sequence[i-1], check if sequence[i-1] is less than sequence[i+1]
+            if (sequence[i - 1] <= sequence[i + 1]) {
+              // If sequence[i-1] is less than sequence[i+1], check if there is a sequence[i+2]
+              if (sequence[i + 2]) {
+                // If there is a sequence[i+2], check if sequence[i+2] is greater than sequence[i+1]
+                if (sequence[i + 2] > sequence[i + 1]) {
+                  // If sequence[i+2] is greater than sequence[i+1], increment removal count, increment i by 1 (i++)
+                  removalCount++;
+                  i++;
+                } else {
+                  // if sequence[i+2] is less than or equal to sequence[i+1], increment removal count by 2, break
+                  removalCount += 2;
+                  break;
+                }
+
+              } else {
+                // If there is not a sequence[i+2], increment removal count, break
+              }
+            } else {
+              // If sequence[i-1] is greater than sequence[i+1], check if there is a sequence[i+2]
+              // If there is a sequence[i+2], check if sequence[i+2] is greater than sequence[i]
+              // If sequence[i+2] is greater than sequence[i], increment removal count, increment i by 1 (i++)
+              // If there is not a sequence[i+2], increment removal count, break
+            }
+
           } else {
-            i++;
-            continue;
+            // If there is not a sequence[i-1], check if there is a sequence[i+2]
+            // If there is a sequence[i+2], check if sequence[i+2] is greater than sequence[i]
+            // If sequence[i+2] is greater than sequence[i], increment removal count, increment i by 1 (i++)
+            // If sequence[i+2] is less or equal to than sequence[i], increment removal count by 2, break
+            // If there is not a sequence[i+2], increment removal count, break
           }
+
         }
       } else {
         break;
