@@ -16,11 +16,21 @@
 const matrix1 = [[0, 1, 1, 2], [0, 5, 0, 0], [2, 0, 3, 3]]; /* expected output: 9 */
 
 function matrixElementsSum(matrix) {
-  const roomTotal = 0;
+  let roomTotal = 0;
+  const matrixHeight = matrix.length;
+  const matrixWidth = matrix[0].length;
 
-  for (let i = 0; i < matrix.length; i++) {
-    for (let j = 0; j < matrix[i].length; j++) {
-
+  for (let i = 0; i < matrixWidth; i++) {
+    for (let j = 0; j < matrixHeight; j++) {
+      if (matrix[j][i] === 0) {
+        break;
+      } else {
+        roomTotal += matrix[j][i];
+      }
     }
   }
+
+  return roomTotal;
 }
+
+console.log(matrixElementsSum(matrix1));
