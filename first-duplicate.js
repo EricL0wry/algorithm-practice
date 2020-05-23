@@ -17,6 +17,19 @@
 
 // For a = [2, 4, 3, 5, 1], the output should be firstDuplicate(a) = -1.
 
+const a1 = [2, 1, 3, 5, 3, 2]; /* expected output 3 */
+const a2 = [2, 2]; /* expected output 2 */
+const a3 = [2, 4, 3, 5, 1]; /* expected output -1 */
+const a4 = [1]; /* expected output -1 */
+const a5 = [5, 5, 5, 5, 5]; /* expected output 5 */
+const a6 = [2, 1]; /* expected output -1 */
+const a7 = [2, 1, 3]; /* expected output -1 */
+const a8 = [2, 3, 3]; /* expected output 3 */
+const a9 = [3, 3, 3]; /* expected output 3 */
+const a10 = [8, 4, 6, 2, 6, 4, 7, 9, 5, 8]; /* expected output 6 */
+const a11 = [10, 6, 8, 4, 9, 1, 7, 2, 5, 3]; /* expected output -1 */
+const a12 = [1, 1, 2, 2, 1]; /* expected output 1 */
+
 function firstDuplicate(a) {
   const duplicates = [];
 
@@ -24,29 +37,46 @@ function firstDuplicate(a) {
   for (let i = 0; i < a.length; i++) {
     // For each value in the array, loop through the rest of the array
     for (let j = i + 1; j < a.length; j++) {
-      // Set a variable to track if a duplicate exists in duplicates array
-      const exists = false;
       // If a match is found, loop through duplicates array
       if (a[i] === a[j]) {
-        for (let dupIndex = 0; dupIndex < duplicates.length; dupIndex++) {
-          const duplicate = duplicates[dupIndex];
-          // If a duplicate record is found in the duplicates array
-          if (duplicate.number === a[j]) {
-            // Update exists variable to true
-            // Check to see if the current index is higher than the top index
-            // If the current index is higher, update the topIndex property with the new index
-            // If the current index is not higher, continue to the next value
-            // Break
-          } else {
-            // If there is not a duplicate record in the duplicates array by the end of the loop
-            // Create a new object with number and index at j, and push to duplicates array
+        // Create a variable to track whether or not there is a record in the duplicates array
+        let exists = false;
+        // Check to see if duplicates array has a length
+        if (duplicates.length > 0) {
+          for (let dupIndex = 0; dupIndex < duplicates.length; dupIndex++) {
+            const duplicate = duplicates[dupIndex];
+            // Check for duplicates in the duplicates array
+            if (duplicate.number === a[j]) {
+              // If a duplicate record is found in the duplicates array
+              // Update exists variable to true
+              exists = true;
+              // Check to see if the current index is higher than the top index
+              if (duplicate.topIndex < j) {
+                // If the current index is higher, update the topIndex property with the new index
+                duplicate.topIndex = j;
+                // If the current index is not higher, continue to the next value
+              }
+              // Break
+              break;
+            }
+            // After loop, check exists variable
+            if (!exists) {
+              // If there is not a duplicate record in the duplicates array by the end of the loop
+              // Create a new object with number and index at j, and push to duplicates array
+              duplicates.push({ number: a[i], topIndex: j });
+            }
           }
+        } else {
+          duplicates.push({ number: a[i], topIndex: j });
         }
       } else {
         // If a match is not found, continue to the next value
+        continue;
       }
     }
   }
+
+  return duplicates;
 
 }
 
@@ -55,3 +85,16 @@ function firstDuplicate(a) {
 //   number: 5,
 //   topIndex: 4
 // }
+
+console.log(firstDuplicate(a1));
+console.log(firstDuplicate(a2));
+console.log(firstDuplicate(a3));
+console.log(firstDuplicate(a4));
+console.log(firstDuplicate(a5));
+console.log(firstDuplicate(a6));
+console.log(firstDuplicate(a7));
+console.log(firstDuplicate(a8));
+console.log(firstDuplicate(a9));
+console.log(firstDuplicate(a10));
+console.log(firstDuplicate(a11));
+console.log(firstDuplicate(a12));
