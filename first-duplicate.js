@@ -18,5 +18,40 @@
 // For a = [2, 4, 3, 5, 1], the output should be firstDuplicate(a) = -1.
 
 function firstDuplicate(a) {
+  const duplicates = [];
+
+  // Loop through array
+  for (let i = 0; i < a.length; i++) {
+    // For each value in the array, loop through the rest of the array
+    for (let j = i + 1; j < a.length; j++) {
+      // Set a variable to track if a duplicate exists in duplicates array
+      const exists = false;
+      // If a match is found, loop through duplicates array
+      if (a[i] === a[j]) {
+        for (let dupIndex = 0; dupIndex < duplicates.length; dupIndex++) {
+          const duplicate = duplicates[dupIndex];
+          // If a duplicate record is found in the duplicates array
+          if (duplicate.number === a[j]) {
+            // Update exists variable to true
+            // Check to see if the current index is higher than the top index
+            // If the current index is higher, update the topIndex property with the new index
+            // If the current index is not higher, continue to the next value
+            // Break
+          } else {
+            // If there is not a duplicate record in the duplicates array by the end of the loop
+            // Create a new object with number and index at j, and push to duplicates array
+          }
+        }
+      } else {
+        // If a match is not found, continue to the next value
+      }
+    }
+  }
 
 }
+
+// Obj Example
+// {
+//   number: 5,
+//   topIndex: 4
+// }
