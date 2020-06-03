@@ -10,43 +10,38 @@
 
 // Pseudo code
 
-// Create an empty object to store values as a hash map
-// Create a variable to hold common character count, set equal to 0
-// Iterate through the letters in string 1
-// For each character, check to see if the character is in the hash map
-// If the character is in the hash map, increment that value by 1
-// If the character is not in the hash map, add the character with a value of 1
-// Iterate through the letters in string 2
-// If the character is in the hash map, increment that value by 1
-// If the character is not in the hash map, add the character with a value of 1
-// Iterate through hash map using for in loop
-// If a key has a value greater than 1
-// Increment our char count variable
-// Return our common character value
+// Iterate through each string
+// Set up a separate hash table for each string
+// store letter counts for each string in each hash table
+// compare both hash tables
+// if letter exists, return lower number
 
 function commonCharacterCount(s1, s2) {
+  const s1count = {};
+  const s2count = {};
 
-  const charMap = {};
+  for (let i = 0; i < s1.length; i++) {
+    const letter = s1[i];
+    if (s1count[letter]) {
+      s1count[letter] = s1count[letter] += 1;
+    } else {
+      s1count[letter] = 1;
+    }
+  }
+  for (let i = 0; i < s2.length; i++) {
+    const letter = s2[i];
+    if (s2count[letter]) {
+      s2count[letter] = s2count[letter] += 1;
+    } else {
+      s2count[letter] = 1;
+    }
+  }
+
   let commonCount = 0;
 
-  const checkString = string => {
-    console.log(charMap);
-    for (let i = 0; i < string.length; i++) {
-      console.log(string[i]);
-      if (charMap[string[i]] > 0) {
-        charMap[string[i]]++;
-      } else {
-        charMap[string[i]] = 1;
-      }
-    }
-  };
-
-  checkString(s1);
-  checkString(s2);
-
-  for (const keys in charMap) {
-    if (charMap[keys] > 1) {
-      commonCount++;
+  for (const key in s1count) {
+    if (s2count[key]) {
+      s1count[key] > s2count[key] ? commonCount += s2count[key] : commonCount += s1count[key];
     }
   }
 
