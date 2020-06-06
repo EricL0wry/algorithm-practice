@@ -16,7 +16,7 @@
 
 // Create two variables to hold totals: teamOne (even), teamTwo (odd)
 // Iterate through each item the array
-// For each item in the array, check remainder (modulus) of i % 2
+// For each item in the array, check if remainder (modulus) of i % 2 ist truthy
 // If remainder is truthy
 // Add number at index to teamTwo total
 // If remainder is falsy
@@ -25,4 +25,20 @@
 
 function alternatingSums(a) {
 
+  let teamOne = 0;
+  let teamTwo = 0;
+
+  for (let i = 0; i < a.length; i++) {
+    if (i % 2 === 1) {
+      teamTwo += a[i];
+    }
+    if (i % 2 === 0) {
+      teamOne += a[i];
+    }
+  }
+
+  return [teamOne, teamTwo];
+
 }
+
+console.log(alternatingSums([50, 60, 60, 45, 70]));
