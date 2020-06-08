@@ -50,7 +50,7 @@
 // Example a = [1, 2, 3] and b = [1, 2, 3]
 
 function areSimilar(a, b) {
-  const values = {}; // values = {1: 1, 2: 1, 3: 1}
+  const values = {}; // values = {1: 0, 2: 0, 3: 0}
   let mismatches = 0; // mismatches = 0
 
   for (let i = 0; i < a.length; i++) { // i = 3, length = 3
@@ -68,8 +68,8 @@ function areSimilar(a, b) {
     }
   }
 
-  for (let i = 0; i < b.length; i++) { // i = 0, length = 3
-    const value = b[i];
+  for (let i = 0; i < b.length; i++) { // i = 3, length = 3
+    const value = b[i]; // value = 3
     if (values[value]) {
       values[value] -= 1;
     } else {
@@ -77,11 +77,13 @@ function areSimilar(a, b) {
     }
   }
 
-  for (const key in values) {
-    if (values[key] !== 0) {
+  for (const key in values) { // key = 3
+    if (values[key] !== 0) { // values.3 = 0
       return false;
     }
   }
 
   return true;
 }
+
+console.log(areSimilar([1, 2, 3], [1, 2, 3]));
