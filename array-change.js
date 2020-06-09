@@ -24,12 +24,15 @@
 //    Add total value to array[i]
 //    Add total value to moveCount
 
+// Test: [1, 2, 3]
+
 function arrayChange(inputArray) {
   let moves = 0;
 
   for (let i = 1; i < inputArray.length; i++) {
+
     const current = inputArray[i];
-    const previous = inputArray[i];
+    const previous = inputArray[i - 1];
 
     if (current <= previous) {
       const movesNeeded = (previous - current) + 1;
@@ -37,6 +40,7 @@ function arrayChange(inputArray) {
       moves += movesNeeded;
     }
   }
-
   return moves;
 }
+
+console.log(arrayChange([1, 1, 1]));
