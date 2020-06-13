@@ -23,14 +23,19 @@
 //      Continue
 // return max difference variable
 
+// Test [10, 11, 13]
+
 function arrayMaximalAdjacentDifference(inputArray) {
-  let maxDiff = 0;
-  for (let i = 0; i < inputArray.length; i++) {
-    const curr = inputArray[i];
-    const adj = inputArray[i + 1] || null;
+  let maxDiff = 0; // maxDiff = 2
+  for (let i = 0; i < inputArray.length; i++) { // i = 2, length = 3
+    const curr = inputArray[i]; // curr = 13
+    const adj = inputArray[i + 1] || null; // adj = null
+    console.log('index', i, 'current', curr, 'adj', adj, 'maxDiff', maxDiff);
     if (adj) {
-      const diff = +(curr - adj);
+      const diff = Math.abs(curr - adj); // diff = 2
+      console.log(diff);
       if (diff > maxDiff) {
+        console.log('diff > maxDiff');
         maxDiff = diff;
       }
     }
@@ -38,4 +43,4 @@ function arrayMaximalAdjacentDifference(inputArray) {
   return maxDiff;
 }
 
-console.log(arrayMaximalAdjacentDifference([2, 4, 1, 0]));
+console.log('answer', arrayMaximalAdjacentDifference([10, 11, 13]));
