@@ -33,12 +33,23 @@
 //  If length !== 4, return false
 // Iterate through the array and validate the string
 //  Return False if:
+//    String contains a letter
 //    String as integer is less than 0 or greater than 255
 //    String contains a leading zero
-//    String contains a letter
 
 function isIPv4Address(inputString) {
+  const octets = inputString.split('.');
 
+  if (octets.length !== 4) return false;
+
+  for (let i = 0; i < octets.length; i++) {
+    const octet = octets[i];
+    if (isNaN(+octet)) return false;
+    if (+octet < 0 || +octet > 255) return false;
+    if (octet.length > 1 && octet[0] === '0') return false;
+  }
+
+  return true;
 }
 
 console.log(isIPv4Address('172.1.254.1'));
