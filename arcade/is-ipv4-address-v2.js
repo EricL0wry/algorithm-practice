@@ -26,6 +26,17 @@
 
 // There is no first number.
 
+// Pseudo Code
+
+// We can use the split method to return an array of octets
+// Then check the length of the array
+//  If length !== 4, return false
+// Iterate through the array and validate the string
+//  Return False if:
+//    String as integer is less than 0 or greater than 255
+//    String contains a leading zero
+//    String contains a letter
+
 function isIPv4Address(inputString) {
 
 }
