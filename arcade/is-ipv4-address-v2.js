@@ -37,19 +37,22 @@
 //    String as integer is less than 0 or greater than 255
 //    String contains a leading zero
 
+// Test '172.1.254.1'
+
 function isIPv4Address(inputString) {
-  const octets = inputString.split('.');
+  const octets = inputString.split('.'); // octets = ['172', '1', '254', '1']
 
-  if (octets.length !== 4) return false;
+  if (octets.length !== 4) return false; // .length = 4
 
-  for (let i = 0; i < octets.length; i++) {
-    const octet = octets[i];
-    if (isNaN(+octet)) return false;
+  for (let i = 0; i < octets.length; i++) { // i = 0; length = 4
+    const octet = octets[i]; // octets[0] = '172'
+    if (isNaN(+octet)) return false; // isNaN(172) = false;
     if (+octet < 0 || +octet > 255) return false;
     if (octet.length > 1 && octet[0] === '0') return false;
+    if (octet === '') return false;
   }
 
   return true;
 }
 
-console.log(isIPv4Address('172.1.254.1'));
+console.log(isIPv4Address('172.316.254.1'));
