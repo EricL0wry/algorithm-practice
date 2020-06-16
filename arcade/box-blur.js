@@ -41,6 +41,47 @@
 // The other three integers are obtained the same way, then the surrounding
 // integers are cropped from the final result.
 
-function boxBlur(image) {
+// NOTES
 
+// Working within a 3X3 moving frame
+// Assuming that all inner arrays are equal in length
+// Height and width can be between 3 - 100
+//  Height = image.length
+//  Width = image[0].length
+// We're NOT guaranteed a square image
+// Construct output image by averaging 3x3 squares and constructing output 3d array
+//  Ouptut array dimensions = h-2 X w-2
+// Loop through each array
+//  Check for value at i+2
+//  If value
+//    Add value at i to the value at i for the next two arrays
+//  If no value, first row of 3x3s is complete
+//    Check for image[i+2]
+//      If value, continue to next array
+//      If no value, break
+// Return blurred image array
+
+function boxBlur(image) {
+  const blurredImage = [];
+  const blurredImageRow = 0;
+  for (let row = 0; row < image.length - 2; row++) {
+    if (!blurredImage[row]) {
+      blurredImage[row] = [];
+    }
+    for (let col = 0; col < image[row].length - 2; col++) {
+
+    }
+  }
 }
+
+// image = [[7, 4, 0, 1, 7, 4, 0, 1],
+//          [5, 6, 2, 2, 7, 4, 0, 1],
+//          [6, 10, 7, 8, 7, 4, 0, 1],
+//          [1, 4, 2, 0, 7, 4, 0, 1],
+//          [1, 4, 2, 0, 7, 4, 0, 1],
+//          [1, 4, 2, 0, 7, 4, 0, 1],
+//          [1, 4, 2, 0, 7, 4, 0, 1],
+//          [1, 4, 2, 0, 7, 4, 0, 1]]
+
+// in 4x8, out 2x6
+// in 8x8, out 6x6
