@@ -63,16 +63,25 @@
 
 function boxBlur(image) {
   const blurredImage = [];
-  const blurredImageRow = 0;
   for (let row = 0; row < image.length - 2; row++) {
     if (!blurredImage[row]) {
       blurredImage[row] = [];
     }
     for (let col = 0; col < image[row].length - 2; col++) {
+      let avg = 0;
+      console.log(image[row][col], image[row][col + 1]);
+      avg += image[row][col] + image[row][col + 1] + image[row][col + 2];
+      avg += image[row + 1][col] + image[row + 1][col + 1] + image[row + 1][col + 2];
+      avg += image[row + 2][col] + image[row + 2][col + 1] + image[row + 2][col + 2];
+      avg = Math.floor(avg / 9);
+      blurredImage[row].push(avg);
 
     }
   }
+  return blurredImage;
 }
+
+console.log(boxBlur([[7, 4, 0, 1], [5, 6, 2, 2], [6, 10, 7, 8], [1, 4, 2, 0]]));
 
 // image = [[7, 4, 0, 1, 7, 4, 0, 1],
 //          [5, 6, 2, 2, 7, 4, 0, 1],
