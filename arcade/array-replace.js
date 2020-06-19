@@ -17,8 +17,8 @@
 // Test inputArray = [3, 2, 3], elemToReplace = 1, and substitutionElem = 3
 
 function arrayReplace(inputArray, elemToReplace, substitutionElem) {
-  for (let i = 0; i < inputArray.length; i++) { // i = 3, length = 3
-    if (inputArray[i] === elemToReplace) { // inputArray[2] = 1
+  for (let i = 0; i < inputArray.length; i++) {
+    if (inputArray[i] === elemToReplace) {
       inputArray[i] = substitutionElem;
     }
   }
