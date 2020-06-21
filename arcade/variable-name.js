@@ -36,17 +36,17 @@
 
 function variableName(name) {
 
-  for(let i = 0; i < name.length; i++){
+  for (let i = 0; i < name.length; i++) {
     const char = name[i].toLowerCase();
-    const letter = true;
-    const number = true;
-    if(i === 0){
+    let letter = true;
+    let number = true;
+    if (i === 0) {
       letter = checkLetters(char);
-      if(!letter) return false;
+      if (!letter) return false;
     } else {
       letter = checkLetters(char);
       number = checkNumbers(char);
-      if(!letter && !number) return false;
+      if (!letter && !number) return false;
       letter = true;
       number = true;
     }
@@ -54,18 +54,20 @@ function variableName(name) {
   return true;
 }
 
-function checkLetters(char){
+function checkLetters(char) {
   const lettersSymbols = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '_'];
-  for(let i = 0; i < lettersSymbols.length; i++){
-    if(lettersSymbols[i] === char) return true
+  for (let i = 0; i < lettersSymbols.length; i++) {
+    if (lettersSymbols[i] === char) return true;
   }
   return false;
 }
 
-function checkNumbers(char){
-  const numbers = ['0', '1', '2', '3', '4', '5', '6', '7' '8', '9'];
+function checkNumbers(char) {
+  const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   for (let i = 0; i < numbers.length; i++) {
-    if (numbers[i] === char) return true
+    if (numbers[i] === char) return true;
   }
   return false;
 }
+
+console.log(variableName('qq-q'));
