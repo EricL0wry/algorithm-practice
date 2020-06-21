@@ -22,10 +22,10 @@
 // Test n = 248622, expected result true
 
 function evenDigitsOnly(n) {
-  const numberString = n.toString(10); // number = '248622'
-  for (let i = 0; i < numberString.length; i++) { // i = 3, length = 6
+  const numberString = n.toString(10);
+  for (let i = 0; i < numberString.length; i++) {
     const number = +numberString[i];
-    if (number % 2) { // number[2] = '8' % 2 = 8 % 2 = 0
+    if (number % 2) {
       return false;
     }
   }
