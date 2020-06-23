@@ -43,4 +43,4 @@ function circleOfNumbers(n, firstNumber) {
   }
 }
 
-console.log(circleOfNumbers(12, 10));
+console.log(circleOfNumbers(12, 9));
