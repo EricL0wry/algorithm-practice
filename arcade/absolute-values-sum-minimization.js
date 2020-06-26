@@ -44,26 +44,29 @@
 //    If less than, no action
 // Return value
 
+// Test  a = [2, 4, 7]
+
 function absoluteValuesSumMinimization(a) {
   let lowestSum = 0;
   let closestElement;
   for (let i = 0; i < a.length; i++) {
     const element = a[i];
     let total = 0;
-    for (let j = 0; j < a.lenght; j++) {
+    for (let j = 0; j < a.length; j++) {
       const curr = a[j];
       total += Math.abs(curr - element);
     }
-    if (lowestSum === 0) {
+    if (closestElement === undefined) {
       lowestSum = total;
       closestElement = element;
-    }
-    if (total < lowestSum) lowestSum = total;
-    if (total === lowestSum) {
+    } else if (total < lowestSum) {
+      lowestSum = total;
+      closestElement = element;
+    } else if (total === lowestSum) {
       if (element < closestElement || element === undefined) closestElement = element;
     }
   }
   return closestElement;
 }
 
-console.log(absoluteValuesSumMinimization([2, 4, 7]));
+console.log(absoluteValuesSumMinimization([2, 3]));
