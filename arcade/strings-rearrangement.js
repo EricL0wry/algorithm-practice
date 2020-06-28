@@ -32,6 +32,18 @@
 // strings differ by 1 character (eg: "aa", "ab", "bb" or "bb", "ab", "aa"), so
 // return true.
 
+// NOTES
+
+// We need to find a way to iterate through the array and examine the letters
+// within the string.
+// Constraints: Array.length 2-10, string length 1-15
+// Possibilities:
+//  Letter counts
+//    ['ab', 'bb', 'aa']
+//    [{a:1, b:1}, {b:2}, {a:2}]
+//  Some way to reduce the string to another type of value
+//    Split ['ab', 'bb', 'aa'] becomes [['a', 'b'], ['b', 'b'], ['a', 'a']]
+
 function stringsRearrangement(inputArray) {
 
 }
