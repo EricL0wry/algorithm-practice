@@ -85,4 +85,4 @@ function compareTwoStrings(str1, str2) {
 }
 
 console.log(stringsRearrangement());
-console.log(compareTwoStrings('aa', 'ab'));
+console.log(compareTwoStrings('aa', 'ac'));
