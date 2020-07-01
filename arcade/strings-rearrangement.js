@@ -43,7 +43,46 @@
 //    [{a:1, b:1}, {b:2}, {a:2}]
 //  Some way to reduce the string to another type of value
 //    Split ['ab', 'bb', 'aa'] becomes [['a', 'b'], ['b', 'b'], ['a', 'a']]
+// Start by figuring out how to compare two strings
 
 function stringsRearrangement(inputArray) {
-
+  return true;
 }
+
+function compareTwoStrings(str1, str2) {
+  const map = {};
+  let mapLength = 0;
+  let difference = 0;
+
+  for (let i = 0; i < str1.length; i++) {
+    const char = str1[i];
+    if (map[char] === undefined) {
+      map.char = 1;
+    } else if (map[char]) {
+      map.char += 1;
+    }
+  }
+
+  for (let i = 0; i < str2.length; i++) {
+    const char = str2[i];
+    if (map[char] === undefined) {
+      map.char = -1;
+    } else if (map[char]) {
+      map.char -= 1;
+    }
+  }
+
+  for (let key in map) {
+    difference += map[key];
+    mapLength++;
+  }
+
+  if (difference === 0 && mapLength === 2) {
+    return true;
+  }
+
+  return false;
+}
+
+console.log(stringsRearrangement());
+console.log(compareTwoStrings('aa', 'ac'));
