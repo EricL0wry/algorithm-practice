@@ -72,7 +72,7 @@ function compareTwoStrings(str1, str2) {
     }
   }
 
-  for (let key in map) {
+  for (const key in map) {
     difference += map[key];
     mapLength++;
   }
@@ -82,6 +82,10 @@ function compareTwoStrings(str1, str2) {
   }
 
   return false;
+}
+
+function compareTwoStringsV2(str1, str2) {
+  
 }
 
 console.log(stringsRearrangement());
