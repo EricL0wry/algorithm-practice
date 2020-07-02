@@ -34,55 +34,75 @@
 
 // NOTES
 
-// We need to find a way to iterate through the array and examine the letters
-// within the string.
-// Constraints: Array.length 2-10, string length 1-15
-// Possibilities:
-//  Letter counts
-//    ['ab', 'bb', 'aa']
-//    [{a:1, b:1}, {b:2}, {a:2}]
-//  Some way to reduce the string to another type of value
-//    Split ['ab', 'bb', 'aa'] becomes [['a', 'b'], ['b', 'b'], ['a', 'a']]
-// Start by figuring out how to compare two strings
+// ["ab", "ad", "ef", "eg"] = false
+// [[null, true, false, false], [true, null, false, false], [false, false, null, true], [false, false, true, null]]
+// [[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]
+// [1, 1, 1, 1] = 4
+
+// ["ab", "af", "ff", "fe"] = true
+// [[null, true, false, false], [true, null, true, false], [false, true, null, true], [false, false, true, null]]
+// [[0, 1, 0, 0], [1, 0, 1, 0], [0, 1, 0, 1], [0, 0, 1, 0]]
+// [1, 2, 2, 1] = 6
+
+// ["zzzzab", "zzzzbb", "zzzzaa"] = true
+// [null, true, true], [true, null, false], [true, null, false]]
+// [2, 1, 1] = 4
+
+// ["abc", "bef", "bcc", "bec", "bbc", "bdc"] = true
+// [[null, false, false, false, true, false], [false, null, false, true, false, false], [false, false, null, true, true, true], [false, true, true, null, true, true], [true, false, true, true, null, true], [false, false, true, true, true, null]]
+// [1, 1, 3, 4, 4, 3] = 16
+
+// ["ab", "bb", "aa"] = true
+// [[null, true, true], [true, null, false], [true, false, null]]
+// [2, 1, 1] = 4
+
+// ["aba", "bbb", "bab"] = false
+// [[null, false, false], [false, null, true], [false, true, null]]
+// [0, 1, 1] = 2
 
 function stringsRearrangement(inputArray) {
-  return true;
-}
+  let score = 0;
 
-function compareTwoStrings(str1, str2) {
-  const map = {};
-  let mapLength = 0;
-  let difference = 0;
-
-  for (let i = 0; i < str1.length; i++) {
-    const char = str1[i];
-    if (map[char] === undefined) {
-      map.char = 1;
-    } else if (map[char]) {
-      map.char += 1;
+  for (let i = 0; i < inputArray.length; i++) {
+    const currStr = inputArray[i];
+    let matches = 0;
+    for (let j = 0; j < inputArray.length; j++) {
+      const otherStr = inputArray[j];
+      let match;
+      if (j === i) {
+        continue;
+      } else {
+        match = compareTwoStrings(currStr, otherStr);
+      }
+      if (match) matches++;
     }
+    score += matches;
   }
 
-  for (let i = 0; i < str2.length; i++) {
-    const char = str2[i];
-    if (map[char] === undefined) {
-      map.char = -1;
-    } else if (map[char]) {
-      map.char -= 1;
-    }
-  }
-
-  for (let key in map) {
-    difference += map[key];
-    mapLength++;
-  }
-
-  if (difference === 0 && mapLength === 2) {
-    return true;
-  }
+  if (inputArray.length < 3 && score > 0) return true;
+  if (score > inputArray.length) return true;
 
   return false;
 }
 
-console.log(stringsRearrangement());
-console.log(compareTwoStrings('aa', 'ac'));
+function compareTwoStrings(str1, str2) {
+  let mismatches = 0;
+
+  for (let i = 0; i < str1.length; i++) {
+    const str1char = str1[i];
+    const str2char = str2[i];
+
+    if (str1char !== str2char) {
+      mismatches++;
+    }
+  }
+
+  if (mismatches !== 1) {
+    return false;
+  }
+
+  return true;
+}
+
+console.log(stringsRearrangement(["abc", "abx", "axx", "abc"]));
+// console.log(compareTwoStrings('q', 'z'));
