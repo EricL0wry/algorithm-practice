@@ -60,6 +60,10 @@
 // [[null, false, false], [false, null, true], [false, true, null]]
 // [0, 1, 1] = 2
 
+// ["abc", "abx", "axx", "abc"] = false
+// [[null, true, false, false], [true, null, true, true], [false, true, null false], [false, true, false, null]]
+// [1, 3, 1, 1] = 6
+
 function stringsRearrangement(inputArray) {
   let score = 0;
 
@@ -75,7 +79,9 @@ function stringsRearrangement(inputArray) {
         match = compareTwoStrings(currStr, otherStr);
       }
       if (match) matches++;
+      if (currStr === otherStr) matches--;
     }
+    if (matches === 0) return false;
     score += matches;
   }
 
