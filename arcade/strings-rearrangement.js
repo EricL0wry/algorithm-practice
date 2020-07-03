@@ -43,14 +43,23 @@
 // [[null, true, false, false], [true, null, true, false], [false, true, null, true], [false, false, true, null]]
 // [[0, 1, 0, 0], [1, 0, 1, 0], [0, 1, 0, 1], [0, 0, 1, 0]]
 // [1, 2, 2, 1] = 6
+// {
+//   1:2
+//   2:2
+// }
 
 // ["zzzzab", "zzzzbb", "zzzzaa"] = true
-// [null, true, true], [true, null, false], [true, null, false]]
+// [[null, true, true], [true, null, false], [true, null, false]]
 // [2, 1, 1] = 4
 
 // ["abc", "bef", "bcc", "bec", "bbc", "bdc"] = true
 // [[null, false, false, false, true, false], [false, null, false, true, false, false], [false, false, null, true, true, true], [false, true, true, null, true, true], [true, false, true, true, null, true], [false, false, true, true, true, null]]
 // [1, 1, 3, 4, 4, 3] = 16
+// {
+//   1:2
+//   3:2
+//   4:2
+// }
 
 // ["ab", "bb", "aa"] = true
 // [[null, true, true], [true, null, false], [true, false, null]]
@@ -64,31 +73,30 @@
 // [[null, true, false, false], [true, null, true, true], [false, true, null false], [false, true, false, null]]
 // [1, 3, 1, 1] = 6
 
+// ["abc", "abx", "abc", "abx", "abc"] = true
+// [[null, true, false, true, false], [true, null, true, false, true], [false, true, null, true, false], [true, false, true, null, true], [false, true, false, true, null]]
+// [2, 3, 2, 3, 2] = 4
+
 function stringsRearrangement(inputArray) {
-  let score = 0;
+  const matchMap = {};
 
   for (let i = 0; i < inputArray.length; i++) {
-    const currStr = inputArray[i];
-    let matches = 0;
+    const currentString = inputArray[i];
+    let totalHits = 0;
     for (let j = 0; j < inputArray.length; j++) {
-      const otherStr = inputArray[j];
-      let match;
-      if (j === i) {
-        continue;
-      } else {
-        match = compareTwoStrings(currStr, otherStr);
-      }
-      if (match) matches++;
-      if (currStr === otherStr) matches--;
+      if (i === j) continue;
+      const otherString = inputArray[j];
+      const match = compareTwoStrings(currentString, otherString);
+      if (match) totalHits += 1;
     }
-    if (matches === 0) return false;
-    score += matches;
+    matchMap[totalHits] === undefined ? matchMap[totalHits] = 1 : matchMap[totalHits] += 1;
   }
 
-  if (inputArray.length < 3 && score > 0) return true;
-  if (score > inputArray.length) return true;
+  for (const key in matchMap) {
+    if (key === '0' || (key === '1' && matchMap[key] > 2)) return false;
+  }
 
-  return false;
+  return true;
 }
 
 function compareTwoStrings(str1, str2) {
@@ -103,12 +111,8 @@ function compareTwoStrings(str1, str2) {
     }
   }
 
-  if (mismatches !== 1) {
-    return false;
-  }
-
-  return true;
+  return mismatches === 1;
 }
 
 console.log(stringsRearrangement(["abc", "abx", "axx", "abc"]));
-// console.log(compareTwoStrings('q', 'z'));
+
