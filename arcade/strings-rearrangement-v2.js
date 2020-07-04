@@ -79,19 +79,24 @@
 
 function stringsRearrangement(inputArray) {
   const matchMap = {};
+  let totalHits = 0;
+  const duplicateCount = {};
 
   for (let i = 0; i < inputArray.length; i++) {
     const currentString = inputArray[i];
-    let totalHits = 0;
+    let occurrences = 0;
+
     for (let j = 0; j < inputArray.length; j++) {
       if (i === j) continue;
       const otherString = inputArray[j];
       const match = compareTwoStrings(currentString, otherString);
       if (match) totalHits += 1;
+      if (currentString === otherString) occurrences === 0 ? occurrences = 2 : occurrences++;
     }
     matchMap[totalHits] === undefined ? matchMap[totalHits] = 1 : matchMap[totalHits] += 1;
+    if (duplicateCount[currentString] === undefined) duplicateCount[currentString] = occurrences;
   }
-
+  console.log(duplicateCount);
   for (const key in matchMap) {
     if (key === '0' || (key === '1' && matchMap[key] > 2)) return false;
   }
@@ -114,5 +119,5 @@ function compareTwoStrings(str1, str2) {
   return mismatches === 1;
 }
 
-console.log(stringsRearrangement(["abc", "abx", "axx", "abc"]));
+console.log(stringsRearrangement(["abc", "abx", "abc", "abx", "abc"]));
 
