@@ -79,11 +79,12 @@
 
 function stringsRearrangement(inputArray) {
   const matchMap = {};
-  let totalHits = 0;
   const duplicateCount = {};
+  const matchCount = {};
 
   for (let i = 0; i < inputArray.length; i++) {
     const currentString = inputArray[i];
+    let totalHits = 0;
     let occurrences = 0;
 
     for (let j = 0; j < inputArray.length; j++) {
@@ -95,8 +96,9 @@ function stringsRearrangement(inputArray) {
     }
     matchMap[totalHits] === undefined ? matchMap[totalHits] = 1 : matchMap[totalHits] += 1;
     if (duplicateCount[currentString] === undefined) duplicateCount[currentString] = occurrences;
+    if (matchCount[currentString] === undefined) matchCount[currentString] = totalHits;
   }
-  console.log(duplicateCount);
+  console.log(duplicateCount, matchCount);
   for (const key in matchMap) {
     if (key === '0' || (key === '1' && matchMap[key] > 2)) return false;
   }
