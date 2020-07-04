@@ -32,6 +32,87 @@
 // strings differ by 1 character (eg: "aa", "ab", "bb" or "bb", "ab", "aa"), so
 // return true.
 
-function stringsRearrangement(inputArray) {
+// NOTES
 
+// ["ab", "ad", "ef", "eg"] = false
+// [[null, true, false, false], [true, null, false, false], [false, false, null, true], [false, false, true, null]]
+// [[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]
+// [1, 1, 1, 1] = 4
+
+// ["ab", "af", "ff", "fe"] = true
+// [[null, true, false, false], [true, null, true, false], [false, true, null, true], [false, false, true, null]]
+// [[0, 1, 0, 0], [1, 0, 1, 0], [0, 1, 0, 1], [0, 0, 1, 0]]
+// [1, 2, 2, 1] = 6
+// {
+//   1:2
+//   2:2
+// }
+
+// ["zzzzab", "zzzzbb", "zzzzaa"] = true
+// [[null, true, true], [true, null, false], [true, null, false]]
+// [2, 1, 1] = 4
+
+// ["abc", "bef", "bcc", "bec", "bbc", "bdc"] = true
+// [[null, false, false, false, true, false], [false, null, false, true, false, false], [false, false, null, true, true, true], [false, true, true, null, true, true], [true, false, true, true, null, true], [false, false, true, true, true, null]]
+// [1, 1, 3, 4, 4, 3] = 16
+// {
+//   1:2
+//   3:2
+//   4:2
+// }
+
+// ["ab", "bb", "aa"] = true
+// [[null, true, true], [true, null, false], [true, false, null]]
+// [2, 1, 1] = 4
+
+// ["aba", "bbb", "bab"] = false
+// [[null, false, false], [false, null, true], [false, true, null]]
+// [0, 1, 1] = 2
+
+// ["abc", "abx", "axx", "abc"] = false
+// [[null, true, false, false], [true, null, true, true], [false, true, null false], [false, true, false, null]]
+// [1, 3, 1, 1] = 6
+
+// ["abc", "abx", "abc", "abx", "abc"] = true
+// [[null, true, false, true, false], [true, null, true, false, true], [false, true, null, true, false], [true, false, true, null, true], [false, true, false, true, null]]
+// [2, 3, 2, 3, 2] = 4
+
+function stringsRearrangement(inputArray) {
+  const matchMap = {};
+
+  for (let i = 0; i < inputArray.length; i++) {
+    const currentString = inputArray[i];
+    let totalHits = 0;
+    for (let j = 0; j < inputArray.length; j++) {
+      if (i === j) continue;
+      const otherString = inputArray[j];
+      const match = compareTwoStrings(currentString, otherString);
+      if (match) totalHits += 1;
+    }
+    matchMap[totalHits] === undefined ? matchMap[totalHits] = 1 : matchMap[totalHits] += 1;
+  }
+
+  for (const key in matchMap) {
+    if (key === '0' || (key === '1' && matchMap[key] > 2)) return false;
+  }
+
+  return true;
 }
+
+function compareTwoStrings(str1, str2) {
+  let mismatches = 0;
+
+  for (let i = 0; i < str1.length; i++) {
+    const str1char = str1[i];
+    const str2char = str2[i];
+
+    if (str1char !== str2char) {
+      mismatches++;
+    }
+  }
+
+  return mismatches === 1;
+}
+
+console.log(stringsRearrangement(["abc", "abx", "axx", "abc"]));
+
