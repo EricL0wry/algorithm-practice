@@ -103,6 +103,13 @@ function stringsRearrangement(inputArray) {
     if (key === '0' || (key === '1' && matchMap[key] > 2)) return false;
   }
 
+  for (const string in duplicateCount) {
+    if (duplicateCount[string] - 1 === matchCount[string] && duplicateCount[string] + matchCount[string] === inputArray.length) continue;
+    if (duplicateCount[string] > matchCount[string]) return false;
+    if (duplicateCount[string] === matchCount[string] && duplicateCount[string] > 2) return false;
+    if (duplicateCount[string] === matchCount[string] && matchMap[1] !== undefined) return false;
+  }
+
   return true;
 }
 
