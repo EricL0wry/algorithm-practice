@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 /* eslint-disable no-console */
 /*
  * Given a string, output its longest prefix which contains only digits.
@@ -13,14 +13,14 @@
  *
  */
 function longestDigitsPrefix(inputString) {
-  let returnString = '';
-  for (const character of inputString) {
-    const currentValue = Number(character);
-    if (Number.isNaN(currentValue) || character === ' ') {
-      break;
+    let returnString = '';
+    for (const character of inputString) {
+        const currentValue = Number(character);
+        if (Number.isNaN(currentValue) || character === ' ') {
+            break;
+        }
+        returnString += character;
     }
-    returnString += character;
-  }
-  return returnString;
+    return returnString;
 }
 console.log(longestDigitsPrefix('123aa1'));
