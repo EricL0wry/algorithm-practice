@@ -30,9 +30,10 @@ function digitDegree(n: number): number {
       .split('')
       .map((x) => Number(x))
       .reduce((acc, curr) => acc + curr);
+    degrees += 1;
   }
 
-  return sumOfDigits;
+  return degrees;
 }
 
 console.log(digitDegree(91));
