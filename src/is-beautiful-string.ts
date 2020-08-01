@@ -53,14 +53,20 @@ function isBeautifulString(inputString: string): boolean {
 
   charArray.sort((a, b) => sortArray(a, b));
 
-  console.log(charArray);
+  for (let i = charArray.length - 1; i >= 0; i--) {
+    const currKey = Object.keys(charArray[i])[0];
 
-  for (let i = 0; i < charArray.length; i++) {
-    if (i + 1 !== charArray.length) {
-      const currKey = Object.keys(charArray[i])[0];
-      const nextKey = Object.keys(charArray[i + 1])[0];
-      if (charArray[i][currKey] < charArray[i + 1][nextKey]) {
-        console.log(charArray[i][currKey], charArray[i + 1][nextKey]);
+    if (i !== 0) {
+      const prevKey = Object.keys(charArray[i - 1])[0];
+      if (
+        charArray[i][currKey] > charArray[i - 1][prevKey] ||
+        prevKey.charCodeAt(0) !== currKey.charCodeAt(0) - 1
+      ) {
+        return false;
+      }
+    }
+    if (i == 0) {
+      if (currKey.charCodeAt(0) !== 97) {
         return false;
       }
     }
@@ -80,4 +86,4 @@ function sortArray(a: CharMap, b: CharMap): number {
   return 0;
 }
 
-console.log(isBeautifulString('bbc'));
+console.log(isBeautifulString('zaa'));
