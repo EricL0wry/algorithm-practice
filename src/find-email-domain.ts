@@ -12,5 +12,8 @@
  */
 
 function findEmailDomain(address: string): string {
-  return 'hi';
+  const splitArray = address.split('@');
+  return splitArray[splitArray.length - 1];
 }
+
+console.log(findEmailDomain('John.Smith@example.com'));

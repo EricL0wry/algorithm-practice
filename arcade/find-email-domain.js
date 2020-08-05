@@ -11,5 +11,7 @@
  * Given a valid email address, find its domain part.
  */
 function findEmailDomain(address) {
-    return 'hi';
+    const splitArray = address.split('@');
+    return splitArray[splitArray.length - 1];
 }
+console.log(findEmailDomain('John.Smith@example.com'));
