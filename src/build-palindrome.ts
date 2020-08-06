@@ -13,9 +13,28 @@
  */
 
 function buildPalindrome(st: string): string {
-  return 'word';
+  const reversedInputString = reverseString(st);
+  if (st === reversedInputString) {
+    return st;
+  }
+  let palindrome = '';
+  for (let i = 1; i < reversedInputString.length; i++) {
+    let returnString = st;
+    returnString += reversedInputString.slice(reversedInputString.length - i);
+    if (checkPalindrome(returnString)) {
+      palindrome = returnString;
+      break;
+    }
+  }
+  return palindrome;
 }
 
 function checkPalindrome(st: string): boolean {
-  return true;
+  return st === reverseString(st);
 }
+
+function reverseString(st: string): string {
+  return st.split('').reverse().join('');
+}
+
+console.log(buildPalindrome('ababab'));
