@@ -1,5 +1,5 @@
+"use strict";
 /* eslint-disable no-console */
-
 /*
  *
  * Determine if the given character is a digit or not.
@@ -11,5 +11,4 @@
  * isDigit(symbol) = false.
  *
  */
-
-function isDigit(symbol) {}
+function isDigit(symbol) { }
