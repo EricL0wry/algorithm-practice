@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 /* eslint-disable no-console */
 /*
  *
@@ -12,20 +12,20 @@
  *
  */
 function isMAC48Address(inputString) {
-  const splitString = inputString.split('-');
-  const regEx = /[A-F0-9]/;
-  if (splitString.length !== 6 || inputString.length !== 17) {
-    return false;
-  }
-  for (let i = 0; i < splitString.length; i++) {
-    const hex = splitString[i];
-    if (hex.length !== 2) {
-      return false;
+    const splitString = inputString.split('-');
+    const regEx = /[A-F0-9]/g;
+    if (splitString.length !== 6 || inputString.length !== 17) {
+        return false;
     }
-    if (!regEx.test(hex[0]) || !regEx.test(hex[1])) {
-      return false;
+    for (let i = 0; i < splitString.length; i++) {
+        const hex = splitString[i];
+        if (hex.length !== 2) {
+            return false;
+        }
+        if (!regEx.test(hex[0]) || !regEx.test(hex[1])) {
+            return false;
+        }
     }
-  }
-  return true;
+    return true;
 }
 console.log(isMAC48Address('Z1-1B-63-84-45-E6'));
