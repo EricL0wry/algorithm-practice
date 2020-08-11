@@ -12,4 +12,8 @@
  *
  */
 
-function isDigit(symbol) {}
+function isDigit(symbol: string): boolean {
+  return /[0-9]/.test(symbol);
+}
+
+console.log(isDigit('5'));
