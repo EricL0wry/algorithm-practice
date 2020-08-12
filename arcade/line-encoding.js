@@ -21,5 +21,49 @@
  *
  */
 function lineEncoding(s) {
-    return '';
+    let counter = 0;
+    let prevChar = '';
+    let currChar = '';
+    let subString = '';
+    let returnString = '';
+    for (let i = 0; i < s.length; i++) {
+        prevChar = currChar;
+        currChar = s[i];
+        if (i === 0) {
+            subString += s[i];
+            counter = 1;
+            continue;
+        }
+        if (prevChar === currChar) {
+            counter += 1;
+            subString += s[i];
+            if (i === s.length - 1) {
+                returnString =
+                    returnString +
+                        `${subString.length > 1
+                            ? subString.length.toString() + currChar
+                            : currChar}`;
+            }
+            continue;
+        }
+        if (prevChar !== currChar) {
+            returnString =
+                returnString +
+                    `${subString.length > 1
+                        ? subString.length.toString() + prevChar
+                        : prevChar}`;
+            subString = currChar;
+            counter = 1;
+            if (i === s.length - 1) {
+                returnString =
+                    returnString +
+                        `${subString.length > 1
+                            ? subString.length.toString() + currChar
+                            : currChar}`;
+            }
+            continue;
+        }
+    }
+    return returnString;
 }
+console.log(lineEncoding('zzzz'));
