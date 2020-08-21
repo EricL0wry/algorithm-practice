@@ -17,10 +17,11 @@
  * Notes
  * Takes in a string
  * First we need to separate the string into x and y coordinates
+ * Create an object to convert the x axis to a number for ease of use
  */
 
 function chessKnight(cell: string): number {
-  const xLookup = {
+  const xLookup: xLookupObj = {
     a: 1,
     b: 2,
     c: 3,
@@ -31,10 +32,24 @@ function chessKnight(cell: string): number {
     h: 8
   };
 
-  const xCoord = cell[0];
-  const yCoord = Number(cell[1]);
-  console.log(yCoord);
-  return 0;
+  const x = xLookup[cell[0]];
+  const y = Number(cell[1]);
+  let totalMoves = 8;
+
+  if (x + 1 > 8 || y + 2 > 8) totalMoves--;
+  if (x + 2 > 8 || y + 1 > 8) totalMoves--;
+  if (x + 1 > 8 || y - 2 < 1) totalMoves--;
+  if (x + 2 > 8 || y - 1 < 1) totalMoves--;
+  if (x - 1 < 1 || y - 2 < 1) totalMoves--;
+  if (x - 2 < 1 || y - 1 < 1) totalMoves--;
+  if (x - 1 < 1 || y + 2 > 8) totalMoves--;
+  if (x - 2 < 1 || y + 1 > 8) totalMoves--;
+
+  return totalMoves;
 }
 
-console.log(chessKnight('c2'));
+interface xLookupObj {
+  [key: string]: number;
+}
+
+console.log(chessKnight('a1'));
