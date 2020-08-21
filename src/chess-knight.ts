@@ -14,7 +14,27 @@
  * For cell = "c2", the output should be
  * chessKnight(cell) = 6
  *
- *
+ * Notes
+ * Takes in a string
+ * First we need to separate the string into x and y coordinates
  */
 
-function chessKnight(cell) {}
+function chessKnight(cell: string): number {
+  const xLookup = {
+    a: 1,
+    b: 2,
+    c: 3,
+    d: 4,
+    e: 5,
+    f: 6,
+    g: 7,
+    h: 8
+  };
+
+  const xCoord = cell[0];
+  const yCoord = Number(cell[1]);
+  console.log(yCoord);
+  return 0;
+}
+
+console.log(chessKnight('c2'));
