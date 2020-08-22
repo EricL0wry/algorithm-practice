@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 /* eslint-disable no-console */
 /*
  *
@@ -20,27 +20,35 @@
  * Create an object to convert the x axis to a number for ease of use
  */
 function chessKnight(cell) {
-  const xLookup = {
-    a: 1,
-    b: 2,
-    c: 3,
-    d: 4,
-    e: 5,
-    f: 6,
-    g: 7,
-    h: 8
-  };
-  const x = xLookup[cell[0]];
-  const y = Number(cell[1]);
-  let totalMoves = 8;
-  if (x + 1 > 8 || y + 2 > 8) totalMoves--;
-  if (x + 2 > 8 || y + 1 > 8) totalMoves--;
-  if (x + 1 > 8 || y - 2 < 1) totalMoves--;
-  if (x + 2 > 8 || y - 1 < 1) totalMoves--;
-  if (x - 1 < 1 || y - 2 < 1) totalMoves--;
-  if (x - 2 < 1 || y - 1 < 1) totalMoves--;
-  if (x - 1 < 1 || y + 2 > 8) totalMoves--;
-  if (x - 2 < 1 || y + 1 > 8) totalMoves--;
-  return totalMoves;
+    const xLookup = {
+        a: 1,
+        b: 2,
+        c: 3,
+        d: 4,
+        e: 5,
+        f: 6,
+        g: 7,
+        h: 8
+    };
+    const x = xLookup[cell[0]];
+    const y = Number(cell[1]);
+    let totalMoves = 8;
+    if (x + 1 > 8 || y + 2 > 8)
+        totalMoves--;
+    if (x + 2 > 8 || y + 1 > 8)
+        totalMoves--;
+    if (x + 1 > 8 || y - 2 < 1)
+        totalMoves--;
+    if (x + 2 > 8 || y - 1 < 1)
+        totalMoves--;
+    if (x - 1 < 1 || y - 2 < 1)
+        totalMoves--;
+    if (x - 2 < 1 || y - 1 < 1)
+        totalMoves--;
+    if (x - 1 < 1 || y + 2 > 8)
+        totalMoves--;
+    if (x - 2 < 1 || y + 1 > 8)
+        totalMoves--;
+    return totalMoves;
 }
 console.log(chessKnight('a1'));
