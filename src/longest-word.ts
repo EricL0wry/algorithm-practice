@@ -10,7 +10,7 @@
  */
 
 function longestWord(text: string): string {
-  const alphabet = 'abcdefghijklmnopqrstuvqxyz';
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
   const wordArray = [];
   let currentWord = '';
 
@@ -43,4 +43,4 @@ function longestWord(text: string): string {
   return wordArray[maxIndex];
 }
 
-console.log(longestWord('ABCd'));
+console.log(longestWord('rain§bow run'));

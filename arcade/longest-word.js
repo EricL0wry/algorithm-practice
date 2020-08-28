@@ -9,7 +9,7 @@
  * longestWord(text) = "steady".
  */
 function longestWord(text) {
-    const alphabet = 'abcdefghijklmnopqrstuvqxyz';
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
     const wordArray = [];
     let currentWord = '';
     for (let i = 0; i < text.length; i++) {
@@ -39,4 +39,4 @@ function longestWord(text) {
     }
     return wordArray[maxIndex];
 }
-console.log(longestWord('ABCd'));
+console.log(longestWord('rain§bow run'));
