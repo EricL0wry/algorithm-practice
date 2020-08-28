@@ -1,5 +1,5 @@
+"use strict";
 /* eslint-disable no-console */
-
 /*
  * Define a word as a sequence of consecutive English letters. Find the longest word from the given string.
  *
@@ -8,7 +8,6 @@
  * For text = "Ready, steady, go!", the output should be
  * longestWord(text) = "steady".
  */
-
-function longestWord(text: string): string {
-  return text;
+function longestWord(text) {
+    return text;
 }
