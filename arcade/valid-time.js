@@ -1,5 +1,5 @@
+"use strict";
 /* eslint-disable no-console */
-
 /*
  *
  * Check if the given string is a correct time representation of the 24-hour clock.
@@ -30,16 +30,14 @@
  *  Else, return false
  * Return true
  */
-
-function validTime(time: string): boolean {
-  const splitArray = time.split(':');
-  const hours = Number(splitArray[0]);
-  const minutes = Number(splitArray[1]);
-
-  if (hours < 0 || hours > 23) return false;
-  if (minutes < 0 || minutes > 59) return false;
-
-  return true;
+function validTime(time) {
+    const splitArray = time.split(':');
+    const hours = Number(splitArray[0]);
+    const minutes = Number(splitArray[1]);
+    if (hours < 0 || hours > 23)
+        return false;
+    if (minutes < 0 || minutes > 59)
+        return false;
+    return true;
 }
-
 console.log(validTime('02:76'));
