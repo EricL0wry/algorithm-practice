@@ -42,4 +42,14 @@ function validTime(time: string): boolean {
   return true;
 }
 
-console.log(validTime('02:76'));
+function validTimeV2(time: string): boolean {
+  const splitArray = time.split(':');
+  return (
+    Number(splitArray[0]) >= 0 &&
+    Number(splitArray[0]) <= 23 &&
+    Number(splitArray[1]) >= 0 &&
+    Number(splitArray[1]) <= 59
+  );
+}
+
+console.log(validTimeV2('25:51'));
