@@ -8,5 +8,9 @@
 
 def circleOfNumbers(n, firstNumber):
 
+  if firstNumber >= n/2:
+    return abs(int((n/2) - firstNumber))
+  else:
+    return int((n/2) + firstNumber)
 
-print(circleOfNumbers(10,2))
+print(circleOfNumbers(6,3))
