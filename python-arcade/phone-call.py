@@ -20,4 +20,31 @@
 
 def phoneCall(min1, min2_10, min11, s):
 
-print(phoneCall(3,10,2,20))
+  money = s 
+  minutes = 0 
+
+  while True: 
+    if minutes == 0: 
+      if money >= min1: 
+        money = money - min1 
+        minutes = minutes + 1 
+        continue
+      else:
+        return minutes
+    if minutes >= 1 and minutes < 10:
+      if money >= min2_10:
+        money = money - min2_10 
+        minutes = minutes + 1 
+        continue
+      else:
+        return minutes
+    if minutes >= 10:
+      if money >= min11:
+        money = money - min11
+        minutes = minutes + 1
+        continue
+      else:
+        return minutes
+
+
+print(phoneCall(10,1,2,22))
