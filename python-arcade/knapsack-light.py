@@ -35,5 +35,4 @@ def knapsackLight(value1, weight1, value2, weight2, maxW):
     else:
       return value1 if weight1 <= maxW else value2
   
-
 print(knapsackLight(5,3,7,4,6))
