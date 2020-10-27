@@ -24,5 +24,16 @@
 
 def knapsackLight(value1, weight1, value2, weight2, maxW):
 
+  if(weight1 > maxW and weight2 > maxW):
+    return 0
+  else:
+    if(weight1 <= maxW and weight2 <= maxW):
+      if(weight1 + weight2 <= maxW):
+        return value1 + value2
+      else:
+        return value1 if value1 >= value2 else value2
+    else:
+      return value1 if weight1 <= maxW else value2
+  
 
-print(knapsackLight(10,5,6,4,9))
+print(knapsackLight(5,3,7,4,6))
