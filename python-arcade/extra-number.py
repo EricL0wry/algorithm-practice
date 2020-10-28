@@ -9,5 +9,10 @@
 # The two equal numbers are a and c. The third number (b) equals 7, which is the answer.
 
 def extraNumber(a, b, c):
+  num_list = [a, b, c]
+  num_list.sort()
+  if num_list[0] == num_list[1]:
+    return num_list[-1]
+  return num_list[0]
 
-print(extraNumber(2,7,2))
+print(extraNumber(5,5,1))
