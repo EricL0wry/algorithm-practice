@@ -23,5 +23,14 @@
 # So the answer is false.
 
 def arithmeticExpression(a, b, c):
+  if a + b == c:
+    return True
+  if a - b == c:
+    return True
+  if a * b == c:
+    return True
+  if a / b == c:
+    return True
+  return False
 
-print(arithmeticExpression(2, 3, 5))
+print(arithmeticExpression(8, 3, 2))
