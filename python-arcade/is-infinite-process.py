@@ -14,5 +14,14 @@
 # isInfiniteProcess(a, b) = true.
 
 def isInfiniteProcess(a, b):
+  if a > b:
+    return True
+  if (a == 0 and b % 2 == 0 or b == 0 and a % 2 == 0):
+    return False
+  if (a == 1 and b % 2 == 1 or b == 1 and a % 2 == 1):
+    return False
+  if (a % 2 == 0 and b % 2 == 0) or (a % 2 == 1 and b % 2 == 1):
+    return False
+  return True
 
-print(isInfiniteProcess(2, 6))
+print(isInfiniteProcess(10, 0))
