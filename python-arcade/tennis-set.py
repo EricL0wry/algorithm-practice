@@ -23,5 +23,21 @@
 # This set will continue until one of these players wins their 7th game, so this can't be the final score.
 
 def tennisSet(score1, score2):
+  scores = set([score1, score2])
+  scores = list(scores)
+  scores.sort()
 
-print(tennisSet(3, 6))
+  if len(scores) < 2:
+    return False
+  if scores[0] == 5 and scores[1] != 7:
+    return False
+  if scores[0] < 5 and scores[1] != 6:
+    return False
+  if scores[0] < 6 and scores[1] < 6:
+    return False
+  if scores[0] > 5 and scores[1] > 7:
+    return False
+  
+  return True
+
+print(tennisSet(6, 5))
