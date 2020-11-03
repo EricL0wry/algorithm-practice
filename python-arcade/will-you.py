@@ -23,4 +23,14 @@
 
 def willYou(young, beautiful, loved):
 
-print(willYou(true,true,true))
+  qualifiers = set([young, beautiful])
+  if len(qualifiers) == 1:
+    if True in qualifiers:
+      return not loved
+    else:
+      return loved
+  else:
+    return loved
+
+
+print(willYou(False,False,True))
