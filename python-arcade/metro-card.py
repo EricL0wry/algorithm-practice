@@ -19,5 +19,17 @@
 # extend your card.
 
 def metroCard(lastNumberOfDays):
+  months = [31,28,31,30,31,30,31,31,30,31,30,31]
+  possibilities = []
+
+  for index,month in enumerate(months):
+    if month == lastNumberOfDays:
+      if index == 11:
+        possibilities.append(months[0])
+      else:
+        possibilities.append(months[index + 1])
+  
+  possibilities.sort()
+  return list(set(possibilities))
 
 print(metroCard(30))
