@@ -19,5 +19,11 @@
 # to 21784.
 
 def arrayPacking(a):
+  binString = ''
+
+  for num in a:
+    binString = format(num, '08b') + binString
+
+  return int(binString, 2)
 
 print(arrayPacking([24, 85, 0]))
