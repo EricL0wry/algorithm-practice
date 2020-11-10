@@ -10,5 +10,10 @@
 # 111], which contains 1 + 2 + 1 + 2 + 2 + 3 = 11 1s.
 
 def rangeBitCount(a, b):
+  onesTotal = 0
+  for num in range(a, b+1):
+    onesTotal += format(num, '08b').count('1')
+
+  return onesTotal
 
 print(rangeBitCount(2, 7))
