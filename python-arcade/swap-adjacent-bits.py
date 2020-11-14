@@ -17,6 +17,6 @@
 # however, it does make a difference.
 
 def swapAdjacentBits(n):
-  return ...
+  return int("".join([format(n, '031b')[::-1][i:i+2][::-1] for i in range(0, len(format(n, '031b')), 2)])[::-1],2)
 
 print(swapAdjacentBits(13))
