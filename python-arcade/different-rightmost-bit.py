@@ -22,6 +22,6 @@
 # So the answer is 24 = 16.
 
 def differentRightmostBit(n, m):
-    return ...
+    return [bin(n & m), bin(n | m)]
 
 print(differentRightmostBit(11, 13))
