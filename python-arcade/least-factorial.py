@@ -12,6 +12,16 @@
 # 17 < 24 = 4! = 1 * 2 * 3 * 4, while 3! = 1 * 2 * 3 = 6 < 17).
 
 def leastFactorial(n):
-  return ...
+  curr_num = 2
+
+  factorial = 1
+
+  while factorial < n:
+    factorial = 1
+    for num in range(1, curr_num):
+      factorial = factorial * num
+    curr_num += 1
+
+  return factorial
 
 print(leastFactorial(17))
