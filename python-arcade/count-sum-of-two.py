@@ -11,13 +11,25 @@
 def countSumOfTwoRepresentations2(n, l, r):
   sum_count = 0
 
-  for num_a in range(l, r+1):
-    for num_b in range(r, l-1, -1):
-      if num_a > num_b:
-        break
-      if num_a + num_b == n:
-        sum_count += 1
+  for num in range(l, r+1):
+    diff = n - num
+    if diff < num:
+      break
+    if diff <= r:
+      sum_count += 1
+
+
+
+
+  # for num_a in range(l, r+1):
+  #   for num_b in range(r, l-1, -1):
+  #     if num_a > num_b:
+  #       break
+  #     if num_a + num_b == n:
+  #       sum_count += 1
+  #     if num_a + num_b < n:
+  #       break
 
   return sum_count
 
-print(countSumOfTwoRepresentations2(6, 2, 4))
+print(countSumOfTwoRepresentations2(93, 24, 58))
