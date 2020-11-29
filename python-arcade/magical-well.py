@@ -11,7 +11,13 @@
 # marble, the well will give you $6. Overall, you'll make $8. So, the output is 8.
 
 def magicalWell(a, b, n):
+  bank = 0
 
-  return
+  for marbles in range(1, n + 1):
+    bank += a * b
+    a += 1
+    b += 1
+
+  return bank
 
 print(magicalWell(1, 2, 2))
