@@ -19,6 +19,18 @@
 # third and fifth commands will the students face the same direction.
 
 def lineUp(commands):
-  return
+  count = 0
+  same_count = 0
 
-print(lineup("LLARL"))
+  for direction in range(len(commands)):
+    if commands[direction] == 'A':
+      count += 2
+    else:
+      count += 1
+
+    if count % 2 == 0:
+      same_count += 1
+
+  return same_count
+
+print(lineUp("LLARL"))
