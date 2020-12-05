@@ -18,6 +18,18 @@
 # Roundness of n is 3, and there is no way to increase it.
 
 def increaseNumberRoundness(n):
-  return
+  num_string = str(n)[::-1]
+  non_zeroes = 0
+  
+  for num in range(len(num_string)):
+    if num_string[num] == '0':
+      if non_zeroes > 0:
+        return True
+      else:
+        continue
+    else:
+      non_zeroes += 1
 
-print(increaseNumberRoundness(902201000))
+  return False
+
+print(increaseNumberRoundness(11000))
