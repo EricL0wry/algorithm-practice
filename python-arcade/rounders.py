@@ -19,6 +19,22 @@
 # 1445 -> 1450 -> 1500 -> 2000.
 
 def rounders(n):
-  return
+  rev_list = list(str(n)[::-1])
+  round_up = False
 
-print(rounders(1445))
+  for num in range(len(rev_list)):
+    curr_int = int(rev_list[num])
+
+    if round_up:
+      curr_int += 1
+
+    if num < len(rev_list) - 1:
+      
+      round_up = curr_int >= 5
+      rev_list[num] = '0'
+    else:
+      rev_list[num] = str(curr_int)
+    
+  return int("".join(rev_list[::-1]))
+
+print(rounders(99))
