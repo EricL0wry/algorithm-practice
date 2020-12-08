@@ -21,6 +21,16 @@
 # Thus, you can burn 5 + 2 + 1 + 1 = 9 candles, which is the answer.
 
 def candles(candlesNumber, makeNew):
-  return
+  burned = 0 # 7
+  candles = candlesNumber # 2
+  leftovers = 0 # 1
+
+  while candles > 0:
+    burned += candles
+    leftovers += candles
+    candles = int(leftovers/makeNew)
+    leftovers = leftovers % makeNew
+
+  return burned
 
 print(candles(5,2))
