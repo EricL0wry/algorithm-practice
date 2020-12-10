@@ -26,7 +26,20 @@
 # 7 cells have at least one common point with the diagonal and are painted black.
 
 def countBlackCells(n, m):
-  return
+  rows = min(n, m)
+  columns = max(n, m)
+  common = 0
 
-print(countBlackCells(3, 4))
+  for row in range(rows):
+    common += int(columns / rows)
+    if columns % rows:
+      common += 1
+    else:
+      common += 2
+  if not columns % rows:
+    common -= 2
+
+  return common
+
+print(countBlackCells(6, 3))
 
