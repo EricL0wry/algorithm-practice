@@ -29,17 +29,49 @@ def countBlackCells(n, m):
   rows = min(n, m)
   columns = max(n, m)
   common = 0
+  tracker = 0
+  intersection = True
 
+  # for row in range(rows):
+  #   common += int(columns / rows)
+  #   tracker += columns
+  #   if intersection:
+  #     common += 1
+  #   if tracker % rows:
+  #     common += 1
+  #   else:
+  #     common += 2
+  #     tracker = 0
+  #     intersection = True
+  #   # if columns % rows:
+  #   #   common += 1
+  #   # else:
+  #   #   common += 2
+  #   print(common, tracker)
+  # if not columns % rows:
+  #   common -= 2
   for row in range(rows):
     common += int(columns / rows)
-    if columns % rows:
+    tracker += columns
+    if intersection == True:
+      common += 1
+      intersection = False
+    if tracker % rows:
       common += 1
     else:
-      common += 2
-  if not columns % rows:
-    common -= 2
+      if columns / rows == 1:
+        common += 1
+      else:
+        common += 2
+      intersection = True
+      tracker = 0
+    print(common, intersection, tracker)
+
+  common -= 2
+
+
 
   return common
 
-print(countBlackCells(6, 3))
+print(countBlackCells(3, 4))
 
