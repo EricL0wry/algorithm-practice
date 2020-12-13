@@ -24,69 +24,12 @@
 # W B B
 
 # 7 cells have at least one common point with the diagonal and are painted black.
+import math
 
 def countBlackCells(n, m):
-  rows = min(n, m) # 1
-  columns = max(n, m) # 2
-  common = 0
-  tracker = 0 # 2
-  intersection = True # False
+  gcd = math.gcd(n, m)
 
-  # for row in range(rows):
-  #   common += int(columns / rows)
-  #   tracker += columns
-  #   if intersection:
-  #     common += 1
-  #   if tracker % rows:
-  #     common += 1
-  #   else:
-  #     common += 2
-  #     tracker = 0
-  #     intersection = True
-  #   # if columns % rows:
-  #   #   common += 1
-  #   # else:
-  #   #   common += 2
-  #   print(common, tracker)
-  # if not columns % rows:
-  #   common -= 2
+  return int(2 * (gcd - 1) + gcd * ((m / gcd) + (n / gcd) - 1))
 
-
-  # for row in range(rows):
-  #   tracker += columns
-
-  #   if intersection == True:
-  #     common += 1
-  #   if tracker % rows:
-  #     common += 1
-  #   else:
-  #     if columns / rows == 1:
-  #       common += 1
-  #     else:
-  #       common += 2
-  #     intersection = True
-  #     tracker = 0
-
-  # common -= 2
-
-  for row in range(rows):
-    tracker += columns
-    common += int(columns / rows)
-    if tracker % rows: # not an intersection
-      if intersection == True:
-        common += 2
-        intersection = False
-      else:
-        common += 1
-    else: # intersection
-      common += 2
-      intersection = True
-  
-  common -= 2
-
-
-
-  return common
-
-print(countBlackCells(3, 4))
+print(countBlackCells(33, 44))
 
