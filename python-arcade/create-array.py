@@ -5,7 +5,7 @@
 # For size = 4, the output should be
 # createArray(size) = [1, 1, 1, 1].
 
-def createArray(size):
-  return
+def createArray(size): 
+  return [1 for num in range(size)]
 
 print(createArray(4))
