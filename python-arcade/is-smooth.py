@@ -22,6 +22,16 @@
 # is false.
 
 def isSmooth(arr):
-  return
+  first = arr[0]
+  last = arr[len(arr) - 1]
+  middle = 0
+
+  if len(arr) % 2 == 0:
+    middle = arr[int((len(arr)/2)-1)] + arr[int(len(arr)/2)]
+  else:
+    middle = arr[int(len(arr)/2)]
+
+  return middle == first == last
 
 print(isSmooth([7, 2, 2, 5, 10, 7]))
+print(isSmooth([-5, -5, 10]))
