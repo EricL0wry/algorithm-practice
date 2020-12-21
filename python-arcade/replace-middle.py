@@ -20,6 +20,15 @@
 # The middle is defined as a single element -5, so the initial array with no changes should be returned.
 
 def replaceMiddle(arr):
-  return
+  if len(arr) % 2 == 0:
+    if len(arr) == 2:
+      return [arr[0] + arr [1]]
+    else:
+      middle  = arr[int(len(arr) / 2 - 1)] + arr[int(len(arr) / 2)]
+      return arr[0:int(len(arr) / 2) - 1:] + [middle] + arr[int(len(arr) / 2) + 1::]
+  else:
+    return arr
 
-print(replaceMiddle([7, 2, 2, 5, 10, 7]))
+  return middle
+
+print(replaceMiddle([7, 2]))
