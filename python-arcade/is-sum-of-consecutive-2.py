@@ -23,6 +23,9 @@ def isSumOfConsecutive2(n):
       if total == n and consecutive > 1:
         ways += 1
         break
+      if total > n:
+        break
+    print(consecutive)
   return ways
 
-print(isSumOfConsecutive2(8))
+print(isSumOfConsecutive2(99))
