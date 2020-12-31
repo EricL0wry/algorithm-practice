@@ -26,7 +26,24 @@
 
 # The sequence goes as follows: 103 -> 10 -> 1 -> 1, 4 elements altogether.
 
-def squareDigitsSequence(a0):
-  return
+# PSEUDO CODE
+# 1. Set current digit
+# 2. Convert current digit to string
+# 3. Iterate through string - for each digit, convert to integer, square, and add to running total
 
-print(squareDigitsSequence(16))
+def squareDigitsSequence(a0):
+  current_number = a0
+  sequence = []
+  number_qty = 0
+  while True:
+    total = 0
+    for digit in str(current_number):
+      total += int(digit) ** 2
+    number_qty += 1
+    if current_number in sequence:
+      break
+    sequence.append(current_number)
+    current_number = total
+  return number_qty
+
+print(squareDigitsSequence(103))
