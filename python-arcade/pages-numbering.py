@@ -24,6 +24,16 @@
 # The following numbers will be printed: 8, 9, 10.
 
 def pagesNumberingWithInk(current, numberOfDigits):
-  return
+  while numberOfDigits > 0: 
+    page = str(current) 
+    length = len(page)
+    numberOfDigits -= length
+    if numberOfDigits > 0:
+      current += 1
+    elif numberOfDigits == 0:
+      return current
+    else:
+      return current -1
 
-print(pagesNumberingWithInk(1, 5))
+
+print(pagesNumberingWithInk(1,5))
