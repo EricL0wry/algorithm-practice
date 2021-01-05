@@ -17,6 +17,17 @@
 # Thus, there are 2 pairs of numbers comfortable with each other within the segment [10; 12]: (10, 11) and (11, 12).
 
 def comfortableNumbers(l, r):
-  return
+  pairs = 0
+  for a in range(l, r + 1):
+    a_digit_sum = 0
+    for char in str(a):
+      a_digit_sum += int(char)
+    for b in range(a + 1, r + 1):
+      b_digit_sum = 0
+      for char in str(b):
+        b_digit_sum += int(char)
+      if b != a and b in range(a - a_digit_sum, a + a_digit_sum + 1) and a in range(b - b_digit_sum, b + b_digit_sum + 1):
+          pairs += 1
+  return pairs
 
-print(comfortableNumbers(10, 12))
+print(comfortableNumbers(12, 108))
