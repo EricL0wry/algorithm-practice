@@ -43,8 +43,6 @@ def weakNumber(n):
         num1d += 1
     dList.append(num1d)
 
-
-
   for index, item in enumerate(dList):
     weakness = 0
     for num in range(index + 1, len(dList)):
