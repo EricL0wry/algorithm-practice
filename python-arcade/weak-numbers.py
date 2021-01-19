@@ -32,42 +32,30 @@
 
 def weakNumber(n):
   weakest = 0
-  weakestQty = 0
-  
+  weakCount = 0
+  dList = []
+
+  # Create List of divisors per number
   for num1 in range(n, 0, -1):
     num1d = 0
-    num1weakness = 0
-    dList = []
-
     for num2 in range(num1, 0, -1):
-      # print(num1, num2)
-      num2d = 0
       if num1 % num2 == 0:
         num1d += 1
-
-      for num3 in range(num2, 0, - 1):
-        # print(num2, num3)
-        if num2 % num3 == 0:
-          num2d += 1
-      
-      dList.append(num2d)
-
-    for num in dList:
-      if num > num1d:
-        num1weakness += 1
-    
-    if num1weakness > weakest:
-      weakest = num1weakness
-      weakestQty = 1
-    elif num1weakness == weakest:
-      weakestQty += 1
-
-
-  
+    dList.append(num1d)
 
 
 
+  for index, item in enumerate(dList):
+    weakness = 0
+    for num in range(index + 1, len(dList)):
+      if dList[num] > item:
+          weakness += 1
+    if weakness > weakest:
+      weakCount = 1
+      weakest = weakness
+    elif weakness == weakest:
+      weakCount += 1
 
-  return [weakest, weakestQty]
+  return [weakest, weakCount]
 
 print(weakNumber(9))
